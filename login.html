@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Hospital Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script>
         // JavaScript to handle login authentication
         function validateLogin() {
@@ -44,14 +44,14 @@
     </header>
 
     <section id="login" class="login-section">
-        <h2>Login</h2>
-        <form onsubmit="return validateLogin();">
+        <h2 align="center">Login</h2>
+        <form id="login-form">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
-
+    
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-
+    
             <label for="role">Role:</label>
             <select id="role" name="role" required>
                 <option value="">Select Role</option>
@@ -59,15 +59,16 @@
                 <option value="doctor">Doctor</option>
                 <option value="staff">Staff</option>
             </select>
-
+    
             <button type="submit">Login</button>
-            <p><a href="recovery.html">Forgot your password?</a></p>
-            <p>Don't have an account? <a href="register.html">Register here</a></p>
         </form>
     </section>
 
     <footer>
         <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
     </footer>
+
+    <script src="login.js"></script>
+
 </body>
 </html>
