@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard - Hospital Management System</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function showSection(sectionId) {
+            const sections = document.getElementsByClassName('section-content');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            document.getElementById(sectionId).style.display = 'block';
+            
+            const tabs = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            document.getElementById(sectionId + '-tab').classList.add('active');
+        }
+
+        window.onload = function() {
+            showSection('personal-info'); 
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -12,73 +31,86 @@
             <h1>Hospital Management System</h1>
             <nav>
                 <ul>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="patient-dashboard.html">Dashboard</a></li>
                     <li><a href="profile.html">Profile</a></li>
-                    <li><a href="#">Appointments</a></li>
-                    <li><a href="index.html">Logout</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="#">Logout</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="dashboard" class="dashboard-section">
-        <h2>Welcome, [Patient's Name]!</h2>
-
-        <div class="dashboard-overview">
-            <h3>Overview</h3>
-            <p>Here is a summary of your health and appointments.</p>
+    <div class="dashboard-container">
+        <!-- Left Navigation Menu -->
+        <div class="nav-menu">
+            <button id="personal-info-tab" class="tab-button active" onclick="showSection('personal-info')">Personal Information</button>
+            <button id="upcoming-appointments-tab" class="tab-button" onclick="showSection('upcoming-appointments')">Upcoming Appointments</button>
+            <button id="medical-history-tab" class="tab-button" onclick="showSection('medical-history')">Medical History</button>
+            <button id="prescriptions-tab" class="tab-button" onclick="showSection('prescriptions')">Current Prescriptions</button>
+            <button id="notifications-tab" class="tab-button" onclick="showSection('notifications')">Notifications</button>
         </div>
 
-        <div class="dashboard-cards">
-            <!-- Upcoming Appointments -->
-            <div class="card">
-                <h4>Upcoming Appointments</h4>
+        <!-- Right Content Display -->
+        <div class="content-area">
+            <!-- Personal Information -->
+            <div id="personal-info" class="section-content">
+                <h3>Personal Information</h3>
                 <ul>
-                    <li>Dr. John Doe - Cardiologist - Oct 25, 2024 - 10:00 AM</li>
-                    <li>Dr. Sarah Lee - Dermatologist - Nov 1, 2024 - 2:30 PM</li>
-                    <li>Dr. Alice Wong - General Practitioner - Nov 10, 2024 - 9:00 AM</li>
+                    <li><strong>Name:</strong> John Doe</li>
+                    <li><strong>Email:</strong> johndoe@example.com</li>
+                    <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+                    <li><strong>Age:</strong> 45</li>
+                    <li><strong>Gender:</strong> Male</li>
+                    <li><strong>Address:</strong> 123 Main St, Springfield, IL, USA</li>
                 </ul>
-                <a href="#" class="cta-btn">View All Appointments</a>
+            </div>
+
+            <!-- Upcoming Appointments -->
+            <div id="upcoming-appointments" class="section-content" style="display: none;">
+                <h3>Upcoming Appointments</h3>
+                <ul>
+                    <li><strong>Dr. John Doe - Cardiologist</strong> - Oct 25, 2024 - 10:00 AM</li>
+                    <li><strong>Dr. Sarah Lee - Dermatologist</strong> - Nov 1, 2024 - 2:30 PM</li>
+                    <li><strong>Dr. Alice Wong - General Practitioner</strong> - Nov 10, 2024 - 9:00 AM</li>
+                </ul>
+                
+                <!-- New Button to Manage Appointments -->
+                <a href="manage-appointments.html" class="cta-btn">Manage Appointments</a>
             </div>
 
             <!-- Medical History -->
-            <div class="card">
-                <h4>Medical History</h4>
+            <div id="medical-history" class="section-content" style="display: none;">
+                <h3>Medical History</h3>
                 <ul>
-                    <li>High Blood Pressure - Managed with medication</li>
-                    <li>Seasonal Allergies - Mild</li>
-                    <li>Fractured Ankle - Healed</li>
+                    <li><strong>High Blood Pressure</strong> - Managed with medication</li>
+                    <li><strong>Seasonal Allergies</strong> - Mild</li>
+                    <li><strong>Fractured Ankle</strong> - Healed</li>
                 </ul>
                 <a href="#" class="cta-btn">View Full History</a>
             </div>
 
-            <!-- Current Prescriptions -->
-            <div class="card">
-                <h4>Prescriptions</h4>
+            <!-- Prescriptions -->
+            <div id="prescriptions" class="section-content" style="display: none;">
+                <h3>Current Prescriptions</h3>
                 <ul>
-                    <li>Lisinopril - 10mg once daily</li>
-                    <li>Amoxicillin - 500mg twice daily</li>
-                    <li>Ibuprofen - 200mg as needed</li>
+                    <li><strong>Lisinopril</strong> - 10mg once daily</li>
+                    <li><strong>Amoxicillin</strong> - 500mg twice daily</li>
+                    <li><strong>Ibuprofen</strong> - 200mg as needed</li>
                 </ul>
                 <a href="#" class="cta-btn">View All Prescriptions</a>
             </div>
 
             <!-- Notifications -->
-            <div class="card">
-                <h4>Notifications</h4>
+            <div id="notifications" class="section-content" style="display: none;">
+                <h3>Notifications</h3>
                 <ul>
-                    <li>Lab Results for Blood Test - Available</li>
-                    <li>Annual Physical - Due in November</li>
+                    <li><strong>Lab Results</strong> for Blood Test - Available</li>
+                    <li><strong>Annual Physical</strong> - Due in November</li>
                 </ul>
                 <a href="#" class="cta-btn">View All Notifications</a>
             </div>
         </div>
-
-        <div class="appointment-section">
-            <h3>Need a new appointment?</h3>
-            <a href="#" class="cta-btn">Book an Appointment</a>
-        </div>
-    </section>
+    </div>
 
     <footer>
         <p>&copy; 2024 Hospital Management System. All rights reserved.</p>

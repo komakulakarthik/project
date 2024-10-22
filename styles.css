@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    background-color: #2C3E50;
+    background-color: #2b3d4f;
     padding: 1rem 0;
     color: #fff;
 }
@@ -284,4 +284,316 @@ form p a:hover {
 
 .edit-btn:hover {
     background-color: #219653;
+}
+/* List Format Styling */
+.info-section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #DDD;
+}
+
+.info-section h3 {
+    color: #27AE60;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.info-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.info-section ul li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #27AE60;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cta-btn:hover {
+    background-color: #219653;
+}
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+    background-color: #2b3d4f;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+/* Left-Side Navigation */
+.nav-menu {
+    width: 25%;
+    background-color: #FFF;
+    padding: 1rem;
+    border-right: 1px solid #DDD;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f4f4f4;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.tab-button.active {
+    background-color: #2b3d4f;
+    color: white;
+}
+
+.tab-button:hover {
+    background-color: #ddd;
+}
+
+/* Right-Side Content */
+.content-area {
+    width: 75%;
+    padding: 2rem;
+    background-color: white;
+}
+
+.section-content {
+    display: none; /* Hidden by default */
+}
+
+.section-content h3 {
+    margin-bottom: 1rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    background-color: #2b3d4f;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cta-btn:hover {
+    background-color: #2b3d4f;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2b3d4f;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+/* Call-to-action button */
+.cta-btn {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    background-color: #27AE60;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cta-btn:hover {
+    background-color: #219653;
+}
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+    background-color: #27AE60;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Appointments Page Layout */
+.appointment-container {
+    display: flex;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+/* Sidebar for Menu */
+.sidebar {
+    width: 20%;
+    background-color: #FFF;
+    padding: 1rem;
+    border-right: 1px solid #DDD;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 1rem;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #27AE60;
+    font-size: 1.1rem;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+.appointment-content {
+    width: 75%;
+    padding: 2rem;
+    background-color: white;
+}
+
+.appointment-content h3 {
+    margin-bottom: 1rem;
+}
+
+/* Forms */
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+}
+
+/* Calendar Placeholder */
+.calendar-placeholder {
+    padding: 2rem;
+    border: 2px dashed #DDD;
+    text-align: center;
+    color: #888;
+}
+
+/* Appointment List */
+.appointments-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.appointments-list li {
+    margin-bottom: 1rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    background-color: #27AE60;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 0.5rem;
+}
+
+.cta-btn.small {
+    padding: 0.5rem 1rem;
+}
+
+.cta-btn.danger {
+    background-color: #E74C3C;
+}
+
+.notification-info {
+    margin-top: 1rem;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #27AE60;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }

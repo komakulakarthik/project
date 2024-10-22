@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="patient-dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="appointment-container">
+        <div class="sidebar">
+            <h2>Appointments Menu</h2>
+            <ul>
+                <li><a href="#create-new-appointment">Create New Appointment</a></li>
+                <li><a href="#view-calendar">View Calendar</a></li>
+                <li><a href="#manage-appointments">Manage Appointments</a></li>
+            </ul>
+        </div>
+
+        <div class="appointment-content">
+            <!-- Create New Appointment Section -->
+            <section id="create-new-appointment">
+                <h3>Create New Appointment</h3>
+                <form action="#" method="post">
+                    <label for="patient-name">Patient Name:</label>
+                    <input type="text" id="patient-name" name="patient-name" required>
+
+                    <label for="doctor">Select Doctor:</label>
+                    <select id="doctor" name="doctor" required>
+                        <option value="dr-john-doe">Dr. John Doe - Cardiologist</option>
+                        <option value="dr-sarah-lee">Dr. Sarah Lee - Dermatologist</option>
+                        <option value="dr-alice-wong">Dr. Alice Wong - General Practitioner</option>
+                    </select>
+
+                    <label for="appointment-date">Appointment Date:</label>
+                    <input type="date" id="appointment-date" name="appointment-date" required>
+
+                    <label for="appointment-time">Appointment Time:</label>
+                    <input type="time" id="appointment-time" name="appointment-time" required>
+
+                    <button type="submit" class="cta-btn">Book Appointment</button>
+                </form>
+            </section>
+
+            <!-- Calendar View Section -->
+            <section id="view-calendar">
+                <h3>View Calendar</h3>
+                <!-- Placeholder for calendar. You can integrate a calendar plugin for a real calendar. -->
+                <div class="calendar-placeholder">
+                    <p>[Calendar of Appointments will appear here]</p>
+                </div>
+            </section>
+
+            <!-- Manage Appointments Section -->
+            <section id="manage-appointments">
+                <h3>Manage Your Appointments</h3>
+                <ul class="appointments-list">
+                    <li>
+                        <strong>Dr. John Doe - Cardiologist</strong> - Oct 25, 2024 - 10:00 AM
+                        <button class="cta-btn small">Reschedule</button>
+                        <button class="cta-btn small danger">Cancel</button>
+                    </li>
+                    <li>
+                        <strong>Dr. Sarah Lee - Dermatologist</strong> - Nov 1, 2024 - 2:30 PM
+                        <button class="cta-btn small">Reschedule</button>
+                        <button class="cta-btn small danger">Cancel</button>
+                    </li>
+                    <li>
+                        <strong>Dr. Alice Wong - General Practitioner</strong> - Nov 10, 2024 - 9:00 AM
+                        <button class="cta-btn small">Reschedule</button>
+                        <button class="cta-btn small danger">Cancel</button>
+                    </li>
+                </ul>
+
+                <p class="notification-info">Reminder notifications will be sent via SMS/Email 24 hours before your appointments.</p>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
