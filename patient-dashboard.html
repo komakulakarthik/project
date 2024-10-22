@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#">Appointments</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="dashboard" class="dashboard-section">
+        <h2>Welcome, [Patient's Name]!</h2>
+
+        <div class="dashboard-overview">
+            <h3>Overview</h3>
+            <p>Here is a summary of your health and appointments.</p>
+        </div>
+
+        <div class="dashboard-cards">
+            <!-- Upcoming Appointments -->
+            <div class="card">
+                <h4>Upcoming Appointments</h4>
+                <ul>
+                    <li>Dr. John Doe - Cardiologist - Oct 25, 2024 - 10:00 AM</li>
+                    <li>Dr. Sarah Lee - Dermatologist - Nov 1, 2024 - 2:30 PM</li>
+                    <li>Dr. Alice Wong - General Practitioner - Nov 10, 2024 - 9:00 AM</li>
+                </ul>
+                <a href="#" class="cta-btn">View All Appointments</a>
+            </div>
+
+            <!-- Medical History -->
+            <div class="card">
+                <h4>Medical History</h4>
+                <ul>
+                    <li>High Blood Pressure - Managed with medication</li>
+                    <li>Seasonal Allergies - Mild</li>
+                    <li>Fractured Ankle - Healed</li>
+                </ul>
+                <a href="#" class="cta-btn">View Full History</a>
+            </div>
+
+            <!-- Current Prescriptions -->
+            <div class="card">
+                <h4>Prescriptions</h4>
+                <ul>
+                    <li>Lisinopril - 10mg once daily</li>
+                    <li>Amoxicillin - 500mg twice daily</li>
+                    <li>Ibuprofen - 200mg as needed</li>
+                </ul>
+                <a href="#" class="cta-btn">View All Prescriptions</a>
+            </div>
+
+            <!-- Notifications -->
+            <div class="card">
+                <h4>Notifications</h4>
+                <ul>
+                    <li>Lab Results for Blood Test - Available</li>
+                    <li>Annual Physical - Due in November</li>
+                </ul>
+                <a href="#" class="cta-btn">View All Notifications</a>
+            </div>
+        </div>
+
+        <div class="appointment-section">
+            <h3>Need a new appointment?</h3>
+            <a href="#" class="cta-btn">Book an Appointment</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

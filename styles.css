@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #2C3E50;
+    padding: 1rem 0;
+    color: #fff;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero-section {
+    background-color: #34495E;
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.cta-btn {
+    background-color: #E74C3C;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.services-section {
+    padding: 2rem 0;
+    text-align: center;
+    background-color: #ECF0F1;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: #fff;
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.features-section {
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.features-section ul {
+    list-style: none;
+}
+
+.about-section {
+    padding: 2rem 0;
+    text-align: center;
+    background-color: #F4F4F4;
+}
+
+.contact-section {
+    padding: 2rem 0;
+    background-color: #ECF0F1;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+form input, form textarea {
+    margin: 0.5rem 0;
+    padding: 0.7rem;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 0.8rem;
+    background-color: #27AE60;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #2C3E50;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+/* Login Section */
+.login-section {
+    padding: 2rem 0;
+    background-color: #F4F4F4;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+form input, form select {
+    margin: 0.5rem 0;
+    padding: 0.7rem;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 0.8rem;
+    background-color: #27AE60;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form p {
+    margin-top: 1rem;
+}
+
+form p a {
+    color: #2980B9;
+    text-decoration: none;
+}
+
+form p a:hover {
+    text-decoration: underline;
+}
+/* Dashboard Section */
+.dashboard-section {
+    padding: 2rem 0;
+    background-color: #F4F4F4;
+    text-align: center;
+}
+
+.dashboard-overview {
+    padding-bottom: 1.5rem;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 22%;
+    background-color: white;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem;
+    text-align: left;
+}
+
+.card h4 {
+    font-size: 1.2rem;
+    color: #27AE60;
+    margin-bottom: 0.5rem;
+}
+
+.card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card ul li {
+    margin-bottom: 0.5rem;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.7rem 1.2rem;
+    background-color: #27AE60;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cta-btn:hover {
+    background-color: #219653;
+}
+
+.appointment-section {
+    margin-top: 2rem;
+}
+
+.appointment-section h3 {
+    margin-bottom: 1rem;
+}
+/* Profile Section */
+.profile-section {
+    padding: 2rem;
+    background-color: #F4F4F4;
+}
+
+.profile-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.profile-card {
+    width: 45%;
+    background-color: white;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid #DDD;
+}
+
+.profile-card h3 {
+    font-size: 1.4rem;
+    color: #27AE60;
+    margin-bottom: 1rem;
+}
+
+.profile-card p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-card ul li {
+    margin-bottom: 0.5rem;
+}
+
+.edit-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #27AE60;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.edit-btn:hover {
+    background-color: #219653;
+}
