@@ -23,6 +23,31 @@
         window.onload = function() {
             showSection('personal-info'); 
         }
+        // Function to load upcoming appointments from localStorage
+        function loadUpcomingAppointments() {
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const upcomingAppointmentsList = document.getElementById('upcoming-appointments-list');
+
+            if (appointments.length === 0) {
+                upcomingAppointmentsList.innerHTML = '<li>No upcoming appointments.</li>';
+                return;
+            }
+
+            // Clear the list before adding new items
+            upcomingAppointmentsList.innerHTML = '';
+
+            // Loop through each appointment and display it
+            appointments.forEach((appointment) => {
+                const appointmentItem = document.createElement('li');
+                appointmentItem.innerHTML = `
+                    <strong>${appointment.doctor}</strong> - ${appointment.date} - ${appointment.time}
+                `;
+                upcomingAppointmentsList.appendChild(appointmentItem);
+            });
+        }
+
+        // Load appointments when the page loads
+        window.onload = loadUpcomingAppointments;
     </script>
 </head>
 <body>

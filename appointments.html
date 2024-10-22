@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointments - Hospital Management System</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to save new appointments to localStorage
+        function saveAppointment(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form data
+            const patientName = document.getElementById('patient-name').value;
+            const doctor = document.getElementById('doctor').value;
+            const appointmentDate = document.getElementById('appointment-date').value;
+            const appointmentTime = document.getElementById('appointment-time').value;
+
+            // Create an appointment object
+            const newAppointment = {
+                patientName: patientName,
+                doctor: doctor,
+                date: appointmentDate,
+                time: appointmentTime
+            };
+
+            // Get existing appointments from localStorage or initialize an empty array
+            const existingAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
+
+            // Add the new appointment to the array
+            existingAppointments.push(newAppointment);
+
+            // Save the updated array back to localStorage
+            localStorage.setItem('appointments', JSON.stringify(existingAppointments));
+
+            // Notify user
+            alert('Appointment booked successfully!');
+
+            // Optionally, reset the form
+            document.getElementById('appointment-form').reset();
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -35,15 +70,15 @@
             <!-- Create New Appointment Section -->
             <section id="create-new-appointment">
                 <h3>Create New Appointment</h3>
-                <form action="#" method="post">
+                <form id="appointment-form" onsubmit="saveAppointment(event)">
                     <label for="patient-name">Patient Name:</label>
                     <input type="text" id="patient-name" name="patient-name" required>
 
                     <label for="doctor">Select Doctor:</label>
                     <select id="doctor" name="doctor" required>
-                        <option value="dr-john-doe">Dr. John Doe - Cardiologist</option>
-                        <option value="dr-sarah-lee">Dr. Sarah Lee - Dermatologist</option>
-                        <option value="dr-alice-wong">Dr. Alice Wong - General Practitioner</option>
+                        <option value="Dr. John Doe - Cardiologist">Dr. John Doe - Cardiologist</option>
+                        <option value="Dr. Sarah Lee - Dermatologist">Dr. Sarah Lee - Dermatologist</option>
+                        <option value="Dr. Alice Wong - General Practitioner">Dr. Alice Wong - General Practitioner</option>
                     </select>
 
                     <label for="appointment-date">Appointment Date:</label>
@@ -59,7 +94,6 @@
             <!-- Calendar View Section -->
             <section id="view-calendar">
                 <h3>View Calendar</h3>
-                <!-- Placeholder for calendar. You can integrate a calendar plugin for a real calendar. -->
                 <div class="calendar-placeholder">
                     <p>[Calendar of Appointments will appear here]</p>
                 </div>
@@ -68,25 +102,10 @@
             <!-- Manage Appointments Section -->
             <section id="manage-appointments">
                 <h3>Manage Your Appointments</h3>
+                <!-- Placeholder for managing appointments -->
                 <ul class="appointments-list">
-                    <li>
-                        <strong>Dr. John Doe - Cardiologist</strong> - Oct 25, 2024 - 10:00 AM
-                        <button class="cta-btn small">Reschedule</button>
-                        <button class="cta-btn small danger">Cancel</button>
-                    </li>
-                    <li>
-                        <strong>Dr. Sarah Lee - Dermatologist</strong> - Nov 1, 2024 - 2:30 PM
-                        <button class="cta-btn small">Reschedule</button>
-                        <button class="cta-btn small danger">Cancel</button>
-                    </li>
-                    <li>
-                        <strong>Dr. Alice Wong - General Practitioner</strong> - Nov 10, 2024 - 9:00 AM
-                        <button class="cta-btn small">Reschedule</button>
-                        <button class="cta-btn small danger">Cancel</button>
-                    </li>
+                    <li>No appointments to manage yet.</li>
                 </ul>
-
-                <p class="notification-info">Reminder notifications will be sent via SMS/Email 24 hours before your appointments.</p>
             </section>
         </div>
     </div>
