@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Recovery - CarePlus Hospital</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page">
+    <div class="login-container" id="recovery-container">
+        <h2 align="center">Password Recovery</h2>
+        <form id="recoveryForm" method="POST">
+            <p>Enter your registered email to receive password reset instructions.</p>
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Send Reset Link</button>
+            <p><a href="login.html">Back to Login</a></p>
+        </form>
+
+        <!-- Success Message (hidden by default) -->
+        <div id="successMessage" class="hidden" align="center">
+            <h3>Success!</h3>
+            <p>A password recovery link has been sent to your email.</p>
+            <p><a href="login.html">Back to Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to display the success message after form submission
+        document.getElementById('recoveryForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            // Hide the form and show the success message
+            document.getElementById('recoveryForm').style.display = 'none';
+            document.getElementById('successMessage').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
