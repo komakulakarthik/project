@@ -112,7 +112,7 @@ form input, form textarea {
 
 form button {
     padding: 0.8rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     border: none;
     font-size: 1rem;
@@ -148,7 +148,7 @@ form input, form select {
 
 form button {
     padding: 0.8rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     border: none;
     font-size: 1rem;
@@ -196,7 +196,7 @@ form p a:hover {
 
 .card h4 {
     font-size: 1.2rem;
-    color: #27AE60;
+    color: #2b3d4f;
     margin-bottom: 0.5rem;
 }
 
@@ -214,14 +214,14 @@ form p a:hover {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.7rem 1.2rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     border-radius: 5px;
     text-decoration: none;
 }
 
 .cta-btn:hover {
-    background-color: #219653;
+    background-color: #2b3d4f;
 }
 
 .appointment-section {
@@ -254,7 +254,7 @@ form p a:hover {
 
 .profile-card h3 {
     font-size: 1.4rem;
-    color: #27AE60;
+    color: #2b3d4f;
     margin-bottom: 1rem;
 }
 
@@ -276,14 +276,14 @@ form p a:hover {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     border-radius: 5px;
     text-decoration: none;
 }
 
 .edit-btn:hover {
-    background-color: #219653;
+    background-color: #2b3d4f;
 }
 /* List Format Styling */
 .info-section {
@@ -295,7 +295,7 @@ form p a:hover {
 }
 
 .info-section h3 {
-    color: #27AE60;
+    color: #2b3d4f;
     font-size: 1.4rem;
     margin-bottom: 1rem;
 }
@@ -314,14 +314,14 @@ form p a:hover {
     display: inline-block;
     margin-top: 1rem;
     padding: 0.7rem 1.2rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     border-radius: 5px;
     text-decoration: none;
 }
 
 .cta-btn:hover {
-    background-color: #219653;
+    background-color: #2b3d4f;
 }
 /* General Styling */
 body {
@@ -437,14 +437,14 @@ footer {
 .cta-btn {
     display: inline-block;
     padding: 0.7rem 1.2rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     border-radius: 5px;
     text-decoration: none;
 }
 
 .cta-btn:hover {
-    background-color: #219653;
+    background-color: #2b3d4f;
 }
 /* General Styling */
 body {
@@ -456,7 +456,7 @@ body {
 
 /* Header */
 header {
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     padding: 1rem 0;
     text-align: center;
@@ -513,7 +513,7 @@ nav ul li a:hover {
 
 .sidebar ul li a {
     text-decoration: none;
-    color: #27AE60;
+    color: #2b3d4f;
     font-size: 1.1rem;
 }
 
@@ -567,7 +567,7 @@ form input, form select {
 .cta-btn {
     display: inline-block;
     padding: 0.7rem 1.2rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     border-radius: 5px;
     text-decoration: none;
@@ -591,7 +591,7 @@ form input, form select {
 footer {
     text-align: center;
     padding: 1rem;
-    background-color: #27AE60;
+    background-color: #2b3d4f;
     color: white;
     position: fixed;
     width: 100%;
