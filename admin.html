@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Load doctor and staff lists when the page loads
+        window.onload = function() {
+            loadDoctorList();
+            loadStaffList();
+        };
+
+        // Function to load doctor list from localStorage
+        function loadDoctorList() {
+            const doctorList = JSON.parse(localStorage.getItem('doctorList')) || [];
+            const doctorTableBody = document.getElementById('doctor-list-body');
+
+            // Clear current table content
+            doctorTableBody.innerHTML = '';
+
+            if (doctorList.length === 0) {
+                doctorTableBody.innerHTML = '<tr><td colspan="5">No doctors added yet.</td></tr>';
+                return;
+            }
+
+            // Populate table with doctors' data
+            doctorList.forEach((doctor, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${doctor.name}</td>
+                    <td>${doctor.specialization}</td>
+                    <td>${doctor.email}</td>
+                    <td><button onclick="viewDoctorProfile(${index})">View Profile</button></td>
+                `;
+                doctorTableBody.appendChild(row);
+            });
+        }
+
+        // Function to load staff list from localStorage
+        function loadStaffList() {
+            const staffList = JSON.parse(localStorage.getItem('staffList')) || [];
+            const staffTableBody = document.getElementById('staff-list-body');
+
+            // Clear current table content
+            staffTableBody.innerHTML = '';
+
+            if (staffList.length === 0) {
+                staffTableBody.innerHTML = '<tr><td colspan="4">No staff members added yet.</td></tr>';
+                return;
+            }
+
+            // Populate table with staff data
+            staffList.forEach((staff, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${staff.name}</td>
+                    <td>${staff.role}</td>
+                    <td>${staff.email}</td>
+                `;
+                staffTableBody.appendChild(row);
+            });
+        }
+
+        // Function to add a new doctor and store it in localStorage
+        function addDoctor() {
+            const name = document.getElementById('doctor-name').value;
+            const specialization = document.getElementById('doctor-specialization').value;
+            const email = document.getElementById('doctor-email').value;
+            const password = generatePassword();
+
+            if (!name || !specialization || !email) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const doctorList = JSON.parse(localStorage.getItem('doctorList')) || [];
+            doctorList.push({ name, specialization, email, password });
+            localStorage.setItem('doctorList', JSON.stringify(doctorList));
+
+            alert(`Doctor added successfully!\nLogin details:\nEmail: ${email}\nPassword: ${password}`);
+            loadDoctorList();  // Reload the doctor list after adding
+            clearForm('doctor');
+        }
+
+        // Function to add a new staff member and store it in localStorage
+        function addStaff() {
+            const name = document.getElementById('staff-name').value;
+            const role = document.getElementById('staff-role').value;
+            const email = document.getElementById('staff-email').value;
+
+            if (!name || !role || !email) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            const staffList = JSON.parse(localStorage.getItem('staffList')) || [];
+            staffList.push({ name, role, email });
+            localStorage.setItem('staffList', JSON.stringify(staffList));
+
+            alert(`Staff member added successfully!`);
+            loadStaffList();  // Reload the staff list after adding
+            clearForm('staff');
+        }
+
+        // Function to generate a random password for the doctor
+        function generatePassword() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let password = '';
+            for (let i = 0; i < 8; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return password;
+        }
+
+        // Function to clear the form after adding a doctor or staff
+        function clearForm(type) {
+            if (type === 'doctor') {
+                document.getElementById('doctor-name').value = '';
+                document.getElementById('doctor-specialization').value = '';
+                document.getElementById('doctor-email').value = '';
+            } else if (type === 'staff') {
+                document.getElementById('staff-name').value = '';
+                document.getElementById('staff-role').value = '';
+                document.getElementById('staff-email').value = '';
+            }
+        }
+
+        // Function to view doctor's profile (simulated)
+        function viewDoctorProfile(index) {
+            const doctorList = JSON.parse(localStorage.getItem('doctorList'));
+            const doctor = doctorList[index];
+            alert(`Viewing profile for ${doctor.name}\nSpecialization: ${doctor.specialization}\nEmail: ${doctor.email}`);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="admin.html">Dashboard</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <!-- Add Doctor Section -->
+        <h2>Add New Doctor</h2>
+        <form id="add-doctor-form">
+            <label for="doctor-name">Doctor Name:</label>
+            <input type="text" id="doctor-name" name="doctor-name" required>
+
+            <label for="doctor-specialization">Specialization:</label>
+            <input type="text" id="doctor-specialization" name="doctor-specialization" required>
+
+            <label for="doctor-email">Email:</label>
+            <input type="email" id="doctor-email" name="doctor-email" required>
+
+            <button type="button" class="cta-btn" onclick="addDoctor()">Add Doctor</button>
+        </form>
+
+        <!-- Doctor List Section -->
+        <h2>All Doctors</h2>
+        <table id="doctor-list" border="1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Specialization</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="doctor-list-body">
+                <!-- Doctor list will be dynamically loaded here -->
+            </tbody>
+        </table>
+
+       
+        
+
+        <!-- Staff List Section -->
+        <h2>All Staff</h2>
+        <table id="staff-list" border="1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="staff-list-body">
+                <!-- Staff list will be dynamically loaded here -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+    </footer>
+
+    <style>
+        /* Admin Container */
+        .admin-container {
+            width: 70%;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form and Table Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"], input[type="email"] {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .cta-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #27AE60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .cta-btn:hover {
+            background-color: #219150;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</body>
+</html>
