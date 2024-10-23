@@ -644,3 +644,26 @@ footer {
 .section-content:first-of-type {
     display: block;
 }
+/* Documents Section */
+#file-upload {
+    margin-bottom: 1rem;
+}
+
+#uploaded-documents-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#uploaded-documents-list li {
+    margin-bottom: 0.5rem;
+}
+
+#uploaded-documents-list a {
+    text-decoration: none;
+    color: #27AE60;
+    font-weight: bold;
+}
+
+#uploaded-documents-list a:hover {
+    text-decoration: underline;
+}

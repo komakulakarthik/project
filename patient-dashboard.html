@@ -48,6 +48,69 @@
 
         // Load appointments when the page loads
         window.onload = loadUpcomingAppointments;
+        function loadUploadedDocuments() {
+            const documents = JSON.parse(localStorage.getItem('documents')) || [];
+            const documentList = document.getElementById('uploaded-documents-list');
+
+            if (documents.length === 0) {
+                documentList.innerHTML = '<li>No documents uploaded yet.</li>';
+                return;
+            }
+
+            // Clear the list before adding new items
+            documentList.innerHTML = '';
+
+            // Loop through each document and display it
+            documents.forEach((document) => {
+                const documentItem = document.createElement('li');
+                documentItem.innerHTML = `
+                    <a href="${document.fileUrl}" download="${document.fileName}">${document.fileName}</a>
+                `;
+                documentList.appendChild(documentItem);
+            });
+        }
+
+        // Function to handle file upload and save file metadata in localStorage
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileUrl = e.target.result;
+                const documents = JSON.parse(localStorage.getItem('documents')) || [];
+
+                // Save file metadata (name and URL) in localStorage
+                documents.push({
+                    fileName: file.name,
+                    fileUrl: fileUrl
+                });
+
+                localStorage.setItem('documents', JSON.stringify(documents));
+
+                // Refresh the document list
+                loadUploadedDocuments();
+            };
+            reader.readAsDataURL(file); // Convert the file to a data URL for demo purposes
+        }
+
+        // Load documents when the page loads
+        window.onload = loadUploadedDocuments;
+        // Function to switch between different sections
+        function showSection(sectionId) {
+            const sections = document.getElementsByClassName('section-content');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Remove 'active' class from all buttons and add to the selected one
+            const buttons = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            document.getElementById(sectionId + '-tab').classList.add('active');
+        }
     </script>
 </head>
 <body>
@@ -73,6 +136,7 @@
             <button id="medical-history-tab" class="tab-button" onclick="showSection('medical-history')">Medical History</button>
             <button id="prescriptions-tab" class="tab-button" onclick="showSection('prescriptions')">Current Prescriptions</button>
             <button id="notifications-tab" class="tab-button" onclick="showSection('notifications')">Notifications</button>
+            <button id="documents-tab" class="tab-button" onclick="showSection('documents')">Uploaded Documents</button>
         </div>
 
         <!-- Right Content Display -->
@@ -133,6 +197,16 @@
                     <li><strong>Annual Physical</strong> - Due in November</li>
                 </ul>
                 <a href="#" class="cta-btn">View All Notifications</a>
+            </div>
+            <!-- Uploaded Documents Section -->
+            <div id="documents" class="section-content" style="display: none;">
+                <h3>Uploaded Documents</h3>
+                <!-- File upload input -->
+                <input type="file" id="file-upload" onchange="handleFileUpload(event)">
+                <h4>Uploaded Documents List:</h4>
+                <ul id="uploaded-documents-list">
+                    <!-- Uploaded documents will be dynamically loaded here -->
+                </ul>
             </div>
         </div>
     </div>
