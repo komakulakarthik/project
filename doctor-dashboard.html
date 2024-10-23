@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - Hospital Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to load upcoming appointments from localStorage
+        function loadDoctorAppointments() {
+            const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            const doctorAppointmentsList = document.getElementById('doctor-appointments-list');
+
+            if (appointments.length === 0) {
+                doctorAppointmentsList.innerHTML = '<li>No upcoming appointments.</li>';
+                return;
+            }
+
+            // Clear the list before adding new items
+            doctorAppointmentsList.innerHTML = '';
+
+            // Loop through each appointment and display it for the logged-in doctor
+            appointments.forEach((appointment) => {
+                const appointmentItem = document.createElement('li');
+                appointmentItem.innerHTML = `
+                    <strong>Patient:</strong> ${appointment.patientName} <br>
+                    <strong>Date:</strong> ${appointment.date} - ${appointment.time}
+                `;
+                doctorAppointmentsList.appendChild(appointmentItem);
+            });
+        }
+
+        // Load doctor's appointments when the page loads
+        window.onload = loadDoctorAppointments;
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hospital Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="doctor-dashboard.html">Dashboard</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="nav-menu">
+            <button id="upcoming-appointments-tab" class="tab-button active" onclick="showSection('upcoming-appointments')">Upcoming Appointments</button>
+            <button id="patient-info-tab" class="tab-button" onclick="showSection('patient-info')">Patient Information</button>
+            <button id="prescriptions-tab" class="tab-button" onclick="showSection('prescriptions')">Manage Prescriptions</button>
+            <button id="schedule-tab" class="tab-button" onclick="showSection('schedule')">Schedule Management</button>
+            <button id="notifications-tab" class="tab-button" onclick="showSection('notifications')">Notifications</button>
+        </div>
+
+        <div class="content-area">
+            <!-- Upcoming Appointments Section -->
+            <div id="upcoming-appointments" class="section-content">
+                <h3>Upcoming Appointments</h3>
+                <ul id="doctor-appointments-list">
+                    <!-- Appointments will be dynamically loaded here -->
+                </ul>
+            </div>
+
+            <!-- Patient Information Section -->
+            <div id="patient-info" class="section-content" style="display: none;">
+                <h3>Patient Information</h3>
+                <!-- List of patients, clickable to view detailed profile and medical history -->
+                <ul id="patient-list">
+                    <li><a href="#">Patient 1 - View Profile</a></li>
+                    <li><a href="#">Patient 2 - View Profile</a></li>
+                    <li><a href="#">Patient 3 - View Profile</a></li>
+                </ul>
+            </div>
+
+            <!-- Manage Prescriptions Section -->
+            <div id="prescriptions" class="section-content" style="display: none;">
+                <h3>Manage Prescriptions</h3>
+                <!-- Form to issue new prescriptions -->
+                <form action="#" method="post">
+                    <label for="patient-name">Patient Name:</label>
+                    <input type="text" id="patient-name" name="patient-name" required>
+
+                    <label for="prescription-details">Prescription Details:</label>
+                    <textarea id="prescription-details" name="prescription-details" required></textarea>
+
+                    <button type="submit" class="cta-btn">Issue Prescription</button>
+                </form>
+            </div>
+
+            <!-- Schedule Management Section -->
+            <div id="schedule" class="section-content" style="display: none;">
+                <h3>Manage Schedule</h3>
+                <!-- Calendar placeholder for managing availability -->
+                <div class="calendar-placeholder">
+                    <p>[Doctor's schedule and availability management]</p>
+                </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div id="notifications" class="section-content" style="display: none;">
+                <h3>Notifications</h3>
+                <!-- Placeholder for doctor's notifications -->
+                <ul id="notifications-list">
+                    <li>No notifications at the moment.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to switch between different sections
+        function showSection(sectionId) {
+            const sections = document.getElementsByClassName('section-content');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
+            }
+            document.getElementById(sectionId).style.display = 'block';
+
+            // Remove 'active' class from all buttons and add to the selected one
+            const buttons = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            document.getElementById(sectionId + '-tab').classList.add('active');
+        }
+    </script>
+</body>
+</html>
