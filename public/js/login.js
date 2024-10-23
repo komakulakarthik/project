@@ -19,17 +19,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ username, password, role }),
             });
 
+            const result = await response.json();
+
             if (!response.ok) {
-                const errorData = await response.json();
-                console.error('Server Error:', errorData);
-                alert(`Error: ${errorData.message}`);
+                console.error('Server Error:', result);
+                alert(`Error: ${result.message}`);
                 return;
             }
 
-            const result = await response.json();
             alert(result.message); // Show success message
-            // Redirect or handle successful login here, e.g.:
-            // window.location.href = '/dashboard.html'; // Example redirect
+
+            // Redirect based on the role
+            switch (result.user.role) {
+                case 'Patient':
+                    window.location.href = '/patient-dashboard.html'; // Redirect to Patient Dashboard
+                    break;
+                case 'Doctor':
+                    window.location.href = '/doctor-dashboard.html'; // Redirect to Doctor Dashboard
+                    break;
+                case 'Staff':
+                    window.location.href = '/staff-dashboard.html'; // Redirect to Staff Dashboard
+                    break;
+                case 'Admin':
+                    window.location.href = '/admin-dashboard.html'; // Redirect to Admin Dashboard
+                    break;
+                default:
+                    alert('Unknown role, redirect failed.');
+            }
         } catch (error) {
             console.error('Error logging in:', error);
             alert('Error logging in. Please try again.');

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Hospital Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login - Hospital Management System</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <header>
@@ -13,38 +13,36 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Services</a></li>
+                    <li><a href="index.html">Features</a></li>
+                    <li><a href="index.html">About Us</a></li>
+                    <li><a href="index.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="register" class="register-section">
-        <h2 align="center">Register</h2>
-        <form id="registration-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-        
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        
+    <section id="login" class="login-section">
+        <h2 align="center">Login</h2>
+        <form id="login-form">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
-        
+    
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-        
+    
             <label for="role">Role:</label>
             <select id="role" name="role" required>
                 <option value="">Select Role</option>
-                <option value="patient">Patient</option>
-                <option value="staff">Staff</option>
+                <option value="Patient">Patient</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Staff">Staff</option>
+                <option value="Admin">Admin</option>
             </select>
-        
-            <button type="submit">Register</button>
+    
+            <button type="submit">Login</button>
+            <p><a href="recovery.html">Forgot your password?</a></p>
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
         </form>
     </section>
 
@@ -52,6 +50,6 @@
         <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
     </footer>
 
-    <script src="registration.js"></script>
+    <script src="/js/login.js"></script>
 </body>
 </html>
