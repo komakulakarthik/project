@@ -6,34 +6,29 @@
     <title>Admin Dashboard - Hospital Management System</title>
     <link rel="stylesheet" href="/css/styles.css">
     <script>
-        // Load doctor and staff lists when the page loads
+        // Load data when the page loads
         window.onload = function() {
             loadDoctorList();
             loadStaffList();
+            loadPatientList();
         };
 
         // Function to load doctor list from localStorage
         function loadDoctorList() {
             const doctorList = JSON.parse(localStorage.getItem('doctorList')) || [];
             const doctorTableBody = document.getElementById('doctor-list-body');
-
-            // Clear current table content
             doctorTableBody.innerHTML = '';
 
             if (doctorList.length === 0) {
-                doctorTableBody.innerHTML = '<tr><td colspan="5">No doctors added yet.</td></tr>';
+                doctorTableBody.innerHTML = '<li>No doctors added yet.</li>';
                 return;
             }
 
-            // Populate table with doctors' data
             doctorList.forEach((doctor, index) => {
-                const row = document.createElement('tr');
+                const row = document.createElement('li');
                 row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${doctor.name}</td>
-                    <td>${doctor.specialization}</td>
-                    <td>${doctor.email}</td>
-                    <td><button onclick="viewDoctorProfile(${index})">View Profile</button></td>
+                    <strong>${doctor.name}</strong> - ${doctor.specialization} 
+                    <button onclick="viewDoctorProfile(${index})">View Profile</button>
                 `;
                 doctorTableBody.appendChild(row);
             });
@@ -43,169 +38,154 @@
         function loadStaffList() {
             const staffList = JSON.parse(localStorage.getItem('staffList')) || [];
             const staffTableBody = document.getElementById('staff-list-body');
-
-            // Clear current table content
             staffTableBody.innerHTML = '';
 
             if (staffList.length === 0) {
-                staffTableBody.innerHTML = '<tr><td colspan="4">No staff members added yet.</td></tr>';
+                staffTableBody.innerHTML = '<li>No staff members added yet.</li>';
                 return;
             }
 
-            // Populate table with staff data
             staffList.forEach((staff, index) => {
-                const row = document.createElement('tr');
+                const row = document.createElement('li');
                 row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${staff.name}</td>
-                    <td>${staff.role}</td>
-                    <td>${staff.email}</td>
+                    <strong>${staff.name}</strong> - ${staff.role} 
+                    <button onclick="viewStaffProfile(${index})">View Profile</button>
                 `;
                 staffTableBody.appendChild(row);
             });
         }
 
-        // Function to add a new doctor and store it in localStorage
-        function addDoctor() {
-            const name = document.getElementById('doctor-name').value;
-            const specialization = document.getElementById('doctor-specialization').value;
-            const email = document.getElementById('doctor-email').value;
-            const password = generatePassword();
+        // Function to load patient list (demo purposes)
+        function loadPatientList() {
+            const patientList = [
+                { name: "Patient 1", age: 45, condition: "Hypertension" },
+                { name: "Patient 2", age: 30, condition: "Diabetes" },
+                { name: "Patient 3", age: 60, condition: "Heart Disease" }
+            ];
 
-            if (!name || !specialization || !email) {
-                alert('Please fill in all fields');
-                return;
-            }
+            const patientTableBody = document.getElementById('patient-list-body');
+            patientTableBody.innerHTML = '';
 
-            const doctorList = JSON.parse(localStorage.getItem('doctorList')) || [];
-            doctorList.push({ name, specialization, email, password });
-            localStorage.setItem('doctorList', JSON.stringify(doctorList));
-
-            alert(`Doctor added successfully!\nLogin details:\nEmail: ${email}\nPassword: ${password}`);
-            loadDoctorList();  // Reload the doctor list after adding
-            clearForm('doctor');
+            patientList.forEach((patient, index) => {
+                const row = document.createElement('li');
+                row.innerHTML = `
+                    <strong>${patient.name}</strong> - ${patient.age} years old 
+                    <button onclick="viewPatientProfile(${index})">View Profile</button>
+                `;
+                patientTableBody.appendChild(row);
+            });
         }
 
-        // Function to add a new staff member and store it in localStorage
-        function addStaff() {
-            const name = document.getElementById('staff-name').value;
-            const role = document.getElementById('staff-role').value;
-            const email = document.getElementById('staff-email').value;
-
-            if (!name || !role || !email) {
-                alert('Please fill in all fields');
-                return;
+        // Function to switch between different sections
+        function showSection(sectionId) {
+            const sections = document.getElementsByClassName('section-content');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].style.display = 'none';
             }
+            document.getElementById(sectionId).style.display = 'block';
 
-            const staffList = JSON.parse(localStorage.getItem('staffList')) || [];
-            staffList.push({ name, role, email });
-            localStorage.setItem('staffList', JSON.stringify(staffList));
-
-            alert(`Staff member added successfully!`);
-            loadStaffList();  // Reload the staff list after adding
-            clearForm('staff');
+            // Remove 'active' class from all buttons and add to the selected one
+            const buttons = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('active');
+            }
+            document.getElementById(sectionId + '-tab').classList.add('active');
         }
 
-        // Function to generate a random password for the doctor
-        function generatePassword() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let password = '';
-            for (let i = 0; i < 8; i++) {
-                password += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return password;
-        }
-
-        // Function to clear the form after adding a doctor or staff
-        function clearForm(type) {
-            if (type === 'doctor') {
-                document.getElementById('doctor-name').value = '';
-                document.getElementById('doctor-specialization').value = '';
-                document.getElementById('doctor-email').value = '';
-            } else if (type === 'staff') {
-                document.getElementById('staff-name').value = '';
-                document.getElementById('staff-role').value = '';
-                document.getElementById('staff-email').value = '';
-            }
-        }
-
-        // Function to view doctor's profile (simulated)
+        // View functions (simulated for demo)
         function viewDoctorProfile(index) {
-            const doctorList = JSON.parse(localStorage.getItem('doctorList'));
-            const doctor = doctorList[index];
-            alert(`Viewing profile for ${doctor.name}\nSpecialization: ${doctor.specialization}\nEmail: ${doctor.email}`);
+            alert(`Viewing profile for Doctor ${index + 1}`);
+        }
+
+        function viewStaffProfile(index) {
+            alert(`Viewing profile for Staff ${index + 1}`);
+        }
+
+        function viewPatientProfile(index) {
+            alert(`Viewing profile for Patient ${index + 1}`);
         }
     </script>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Admin Dashboard</h1>
+            <h1>Hospital Management System - Admin Dashboard</h1>
             <nav>
                 <ul>
-                    <li><a href="admin.html">Dashboard</a></li>
+                    <li><a href="admin-dashboard.html">Dashboard</a></li>
                     <li><a href="login.html">Logout</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="admin-container">
-        <!-- Add Doctor Section -->
-        <h2>Add New Doctor</h2>
-        <form id="add-doctor-form">
-            <label for="doctor-name">Doctor Name:</label>
-            <input type="text" id="doctor-name" name="doctor-name" required>
+    <div class="dashboard-container">
+        <div class="nav-menu">
+            <button id="manage-doctors-tab" class="tab-button active" onclick="showSection('manage-doctors')">Manage Doctors</button>
+            <button id="manage-staff-tab" class="tab-button" onclick="showSection('manage-staff')">Manage Staff</button>
+            <button id="manage-patients-tab" class="tab-button" onclick="showSection('manage-patients')">Manage Patients</button>
+            <button id="manage-appointments-tab" class="tab-button" onclick="showSection('manage-appointments')">Manage Appointments</button>
+            <button id="manage-prescriptions-tab" class="tab-button" onclick="showSection('manage-prescriptions')">Manage Prescriptions</button>
+            <button id="view-notifications-tab" class="tab-button" onclick="showSection('view-notifications')">View Notifications</button>
+        </div>
 
-            <label for="doctor-specialization">Specialization:</label>
-            <input type="text" id="doctor-specialization" name="doctor-specialization" required>
+        <div class="content-area">
+            <!-- Manage Doctors Section -->
+            <div id="manage-doctors" class="section-content">
+                <h3>All Doctors</h3>
+                <ul id="doctor-list-body">
+                    <!-- Doctor list will be dynamically loaded here -->
+                </ul>
+            </div>
 
-            <label for="doctor-email">Email:</label>
-            <input type="email" id="doctor-email" name="doctor-email" required>
+            <!-- Manage Staff Section -->
+            <div id="manage-staff" class="section-content" style="display: none;">
+                <h3>All Staff</h3>
+                <ul id="staff-list-body">
+                    <!-- Staff list will be dynamically loaded here -->
+                </ul>
+            </div>
 
-            <button type="button" class="cta-btn" onclick="addDoctor()">Add Doctor</button>
-        </form>
+            <!-- Manage Patients Section -->
+            <div id="manage-patients" class="section-content" style="display: none;">
+                <h3>All Patients</h3>
+                <ul id="patient-list-body">
+                    <!-- Patient list will be dynamically loaded here -->
+                </ul>
+            </div>
 
-        <!-- Doctor List Section -->
-        <h2>All Doctors</h2>
-        <table id="doctor-list" border="1">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Specialization</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="doctor-list-body">
-                <!-- Doctor list will be dynamically loaded here -->
-            </tbody>
-        </table>
+            <!-- Manage Appointments Section -->
+            <div id="manage-appointments" class="section-content" style="display: none;">
+                <h3>Manage Appointments</h3>
+                <ul>
+                    <li>No appointments available at the moment.</li>
+                </ul>
+            </div>
 
-       
-        
+            <!-- Manage Prescriptions Section -->
+            <div id="manage-prescriptions" class="section-content" style="display: none;">
+                <h3>Manage Prescriptions</h3>
+                <ul>
+                    <li>No prescriptions available at the moment.</li>
+                </ul>
+            </div>
 
-        <!-- Staff List Section -->
-        <h2>All Staff</h2>
-        <table id="staff-list" border="1">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Role</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody id="staff-list-body">
-                <!-- Staff list will be dynamically loaded here -->
-            </tbody>
-        </table>
+            <!-- View Notifications Section -->
+            <div id="view-notifications" class="section-content" style="display: none;">
+                <h3>View Notifications</h3>
+                <ul>
+                    <li>No notifications available at the moment.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2024 Hospital Management System. All rights reserved.</p>
     </footer>
+
+    
+
 
     <style>
         /* Admin Container */
